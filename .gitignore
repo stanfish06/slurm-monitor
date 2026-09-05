@@ -1,0 +1,13 @@
+docs/
+openspec/
+.claude/
+.venv/
+__pycache__/
+*.pyc
+*.so
+*.c
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+tests/fixtures/_scratch/

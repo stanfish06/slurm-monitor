@@ -1,0 +1,58 @@
+[project]
+name = "slurm-monitor"
+version = "0.1.0"
+description = "Terminal UI for watching your own Slurm jobs over one persistent SSH connection"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+    "pydantic>=2.7",
+    "textual>=0.80",
+]
+
+[project.optional-dependencies]
+# Cluster-side only. pyslurm links against libslurmfull, which exists only on Slurm hosts.
+agent = [
+    "pyslurm==25.11.2",
+    "cython>=3.0",
+    "setuptools>=70",
+]
+
+[project.scripts]
+slurm-monitor = "slurm_monitor.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.6",
+    "ty",
+]
+
+[build-system]
+requires = ["uv_build>=0.8,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "slurm_monitor"
+module-root = "src"
+# Ship the Cython extension source and its build script; bootstrap compiles them on the cluster.
+source-include = ["src/slurm_monitor/ext/**"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "cluster: needs a live Slurm controller and accounting database (run on the cluster)",
+    "pyslurm: needs an importable pyslurm built against Slurm 25.11 (Linux only)",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ty.environment]
+python-version = "3.11"
