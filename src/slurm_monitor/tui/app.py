@@ -479,7 +479,7 @@ class SlurmMonitorApp(App[int]):
             self.run_worker(self.perform_cancel(target), exit_on_error=False, group="cancel")
 
     async def perform_cancel(self, target: CancelTarget) -> None:
-        label = f"array task {target.label}" if target.array_task_id is not None else "job"
+        label = "array task" if target.array_task_id is not None else "job"
         if target.array_task_id is None and target.task_count > 1:
             label = "array"
         if not target_is_cancellable(self.active_snapshot, target):

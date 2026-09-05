@@ -213,9 +213,12 @@ class SubprocessTransport(Transport):
         self._fail_pending(err)
 
     async def _drain_stderr(self) -> None:
-        assert self._proc is not None and self._proc.stderr is not None
+        # Hold the stream locally: close() clears self._proc while this task may still be reading.
+        proc = self._proc
+        assert proc is not None and proc.stderr is not None
+        stderr = proc.stderr
         while True:
-            line = await self._proc.stderr.readline()
+            line = await stderr.readline()
             if not line:
                 return
             text = line.decode("utf-8", errors="replace").rstrip()
