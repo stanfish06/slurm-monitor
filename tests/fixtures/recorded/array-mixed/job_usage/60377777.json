@@ -1,0 +1,52 @@
+[
+  {
+    "cpu": {
+      "consumed": 0.0,
+      "requested": 43.0,
+      "unit": "cpu-seconds"
+    },
+    "gpu_accounting_available": null,
+    "gpu_memory": null,
+    "gpu_utilization": null,
+    "gpus_allocated": 0,
+    "job_id": 60377777,
+    "memory": {
+      "consumed": 1.5625,
+      "requested": 200.0,
+      "unit": "MB"
+    },
+    "sampled": true,
+    "sampled_at": "2026-09-05T12:16:03.417832Z",
+    "state": "RUNNING",
+    "walltime": {
+      "consumed": 43.0,
+      "requested": 300.0,
+      "unit": "seconds"
+    }
+  },
+  {
+    "cpu": {
+      "consumed": 0.0,
+      "requested": 91.0,
+      "unit": "cpu-seconds"
+    },
+    "gpu_accounting_available": null,
+    "gpu_memory": null,
+    "gpu_utilization": null,
+    "gpus_allocated": 0,
+    "job_id": 60377777,
+    "memory": {
+      "consumed": 1.5625,
+      "requested": 200.0,
+      "unit": "MB"
+    },
+    "sampled": true,
+    "sampled_at": "2026-09-05T12:20:28.533295Z",
+    "state": "COMPLETED",
+    "walltime": {
+      "consumed": 91.0,
+      "requested": 300.0,
+      "unit": "seconds"
+    }
+  }
+]

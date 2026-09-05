@@ -1,0 +1,25 @@
+{
+  "job_id": 900,
+  "state": "COMPLETED",
+  "sampled": true,
+  "sampled_at": null,
+  "cpu": {
+    "unit": "cpu-seconds",
+    "consumed": 1800.0,
+    "requested": 3600.0
+  },
+  "memory": {
+    "unit": "MB",
+    "consumed": 4000.0,
+    "requested": 16000.0
+  },
+  "walltime": {
+    "unit": "seconds",
+    "consumed": 900.0,
+    "requested": 7200.0
+  },
+  "gpus_allocated": 0,
+  "gpu_utilization": null,
+  "gpu_memory": null,
+  "gpu_accounting_available": null
+}

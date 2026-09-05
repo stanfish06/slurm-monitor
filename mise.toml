@@ -7,3 +7,15 @@ run = "uv run pytest -q"
 
 [tasks.lint]
 run = "uv run ruff check . && uv run ruff format --check ."
+
+[tasks."container:build"]
+description = "Build the Linux (Apple container) dev image with the Slurm 25.11.6 closure"
+run = "container/dev.sh build"
+
+[tasks."container:shell"]
+description = "Shell in the flake devShell inside the container, repo mounted at /work"
+run = "container/dev.sh shell"
+
+[tasks."ci:local"]
+description = "Fixture tier as CI runs it (no pyslurm, no cluster)"
+run = 'uv run pytest -q -m "not pyslurm and not cluster"'

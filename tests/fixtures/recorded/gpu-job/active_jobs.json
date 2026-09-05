@@ -1,0 +1,31 @@
+[
+  {
+    "degraded": false,
+    "fetched_at": "2026-09-05T12:21:38.740566Z",
+    "jobs": [
+      {
+        "account": "iheemske0",
+        "array_job_id": null,
+        "array_task_id": null,
+        "array_task_range": null,
+        "cancelled_by": null,
+        "elapsed_seconds": 44,
+        "end_time": null,
+        "exit_code": null,
+        "exit_signal": null,
+        "failed_node": null,
+        "job_id": 60377811,
+        "name": "gpujob",
+        "num_cpus": 1,
+        "num_nodes": 1,
+        "partition": "gpu",
+        "source": "controller",
+        "start_time": "2026-09-05T12:20:54Z",
+        "state": "RUNNING",
+        "state_reason": null,
+        "submit_time": "2026-09-05T12:20:28Z",
+        "user": "zyyu"
+      }
+    ]
+  }
+]

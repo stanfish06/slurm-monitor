@@ -1,0 +1,12 @@
+{
+  "agent_version": "0.1.0",
+  "extension_available": false,
+  "extension_error": "ModuleNotFoundError: No module named 'slurm_monitor_ext'",
+  "hostname": "gl-login1.arc-ts.umich.edu",
+  "protocol_version": 1,
+  "pyslurm_version": "25.11.2",
+  "sampling_interval_seconds": 30,
+  "slurm_built_version": "25.11.5",
+  "slurm_running_version": "25.11.5",
+  "user": "zyyu"
+}

@@ -1,0 +1,121 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 2262a2b..fd7680d 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
+ 
+ ### Added
+ 
++- `pyslurm.Jobs.load()` accepts a new `user` argument (name or UID) to load only
++  that user's Jobs via `slurm_load_job_user()`, instead of the whole Job table
+ - New Classes to interact with Database Associations (WIP)
+     - `pyslurm.db.Association`
+     - `pyslurm.db.Associations`
+diff --git a/pyslurm/core/job/job.pxd b/pyslurm/core/job/job.pxd
+index 191c738..1dc7f3a 100644
+--- a/pyslurm/core/job/job.pxd
++++ b/pyslurm/core/job/job.pxd
+@@ -46,6 +46,7 @@ from pyslurm.slurm cimport (
+     slurm_free_job_info,
+     slurm_load_job,
+     slurm_load_jobs,
++    slurm_load_job_user,
+     job_info_msg_t,
+     slurm_job_info_t,
+     slurm_job_state_string,
+diff --git a/pyslurm/core/job/job.pyx b/pyslurm/core/job/job.pyx
+index 1b3eb98..67e4117 100644
+--- a/pyslurm/core/job/job.pyx
++++ b/pyslurm/core/job/job.pyx
+@@ -45,6 +45,7 @@ from pyslurm.utils.ctime import _raw_time
+ from pyslurm.utils.helpers import (
+     uid_to_name,
+     gid_to_name,
++    user_to_uid,
+     signal_to_num,
+     _getgrall_to_dict,
+     _getpwall_to_dict,
+@@ -72,8 +73,8 @@ cdef class Jobs(MultiClusterMap):
+                          key_type=int)
+ 
+     @staticmethod
+-    def load(preload_passwd_info=False, frozen=False):
+-        """Retrieve all Jobs from the Slurm controller
++    def load(preload_passwd_info=False, frozen=False, user=None):
++        """Retrieve Jobs from the Slurm controller
+ 
+         Args:
+             preload_passwd_info (bool, optional):
+@@ -85,12 +86,18 @@ cdef class Jobs(MultiClusterMap):
+                 instances.
+             frozen (bool, optional):
+                 Decide whether this collection of Jobs should be frozen.
++            user (Union[str, int], optional):
++                Only load Jobs belonging to this user, given as a user name
++                or UID. The filtering is done by the slurmctld through
++                `slurm_load_job_user()`, so on a busy cluster this is much
++                cheaper than loading every Job and filtering afterwards.
++                By default, Jobs of all users are loaded.
+ 
+         Returns:
+             (pyslurm.Jobs): A collection of Job objects.
+ 
+         Raises:
+-            (pyslurm.RPCError): When getting all the Jobs from the slurmctld
++            (pyslurm.RPCError): When getting the Jobs from the slurmctld
+                 failed.
+ 
+         Examples:
+@@ -100,15 +107,21 @@ cdef class Jobs(MultiClusterMap):
+             pyslurm.Jobs({1: pyslurm.Job(1), 2: pyslurm.Job(2)})
+             >>> print(jobs[1])
+             pyslurm.Job(1)
++            >>> my_jobs = pyslurm.Jobs.load(user="root")
+         """
+         cdef:
+             dict passwd = {}
+             dict groups = {}
+             Jobs jobs = Jobs(frozen=frozen)
+             int flags = slurm.SHOW_ALL | slurm.SHOW_DETAIL
++            uint32_t uid
+             Job job
+ 
+-        verify_rpc(slurm_load_jobs(0, &jobs.info, flags))
++        if user is None:
++            verify_rpc(slurm_load_jobs(0, &jobs.info, flags))
++        else:
++            uid = user_to_uid(user)
++            verify_rpc(slurm_load_job_user(&jobs.info, uid, flags))
+ 
+         # If requested, preload the passwd and groups database to potentially
+         # speedup lookups for an attribute in a Job, e.g. user_name or
+diff --git a/tests/integration/test_job.py b/tests/integration/test_job.py
+index 00a4117..b28a09a 100644
+--- a/tests/integration/test_job.py
++++ b/tests/integration/test_job.py
+@@ -159,6 +159,25 @@ def test_get_job_queue(submit_job):
+         assert isinstance(jobs[job.id], Job)
+ 
+ 
++def test_load_for_user(submit_job):
++    import os
++    import pwd
++
++    job_list = [submit_job(priority=0) for i in range(3)]
++    uid = os.getuid()
++
++    # Filtering by UID and by name must both return only our own Jobs.
++    for user in (uid, pwd.getpwuid(uid).pw_name):
++        jobs = Jobs.load(user=user)
++        assert all(job.user_id == uid for job in jobs.values())
++        for job in job_list:
++            assert job.id in jobs
++            assert isinstance(jobs[job.id], Job)
++
++    # A user without Jobs yields an empty collection, not an error.
++    assert len(Jobs.load(user="nobody")) == 0
++
++
+ def test_load_steps(submit_job):
+     submitted = submit_job()
+     util.wait_for_job_running(submitted.id)

@@ -1,0 +1,471 @@
+{
+  "account": "iheemske0",
+  "admin_comment": null,
+  "allocated_tres": {
+    "billing": {
+      "count": 27391,
+      "id": 5,
+      "name": null,
+      "type": "billing",
+      "type_and_name": "billing"
+    },
+    "cpu": {
+      "count": 1,
+      "id": 1,
+      "name": null,
+      "type": "cpu",
+      "type_and_name": "cpu"
+    },
+    "energy": null,
+    "fs": {},
+    "gres": {
+      "gpu": {
+        "count": 1,
+        "id": 1001,
+        "name": "gpu",
+        "type": null,
+        "type_and_name": "gres/gpu"
+      }
+    },
+    "interconnect": {},
+    "license": {},
+    "mem": {
+      "count": 2048,
+      "id": 2,
+      "name": null,
+      "type": "mem",
+      "type_and_name": "mem"
+    },
+    "node": {
+      "count": 1,
+      "id": 4,
+      "name": null,
+      "type": "node",
+      "type_and_name": "node"
+    },
+    "other": {},
+    "pages": null,
+    "raw_str": null,
+    "vmem": null
+  },
+  "array_id": null,
+  "array_task_id": null,
+  "array_tasks_parallel": null,
+  "array_tasks_waiting": null,
+  "association_id": 68093,
+  "block_id": null,
+  "cancelled_by": null,
+  "cluster": "greatlakes",
+  "comment": null,
+  "constraints": [],
+  "container": [],
+  "cpus": 1,
+  "db_index": 9797160727019297792,
+  "derived_exit_code": 0,
+  "derived_exit_code_signal": 0,
+  "elapsed_time": 44,
+  "eligible_time": 1788610828,
+  "end_time": null,
+  "environment": {},
+  "exit_code": 0,
+  "exit_code_signal": 0,
+  "extra": null,
+  "failed_node": null,
+  "gpus": {
+    "gpu": {
+      "count": 1,
+      "id": 1001,
+      "name": "gpu",
+      "type": null,
+      "type_and_name": "gres/gpu"
+    }
+  },
+  "gres": {
+    "gpu": {
+      "count": 1,
+      "id": 1001,
+      "name": "gpu",
+      "type": null,
+      "type_and_name": "gres/gpu"
+    }
+  },
+  "heterogeneous_id": null,
+  "heterogeneous_offset": 4294967294,
+  "id": 60377811,
+  "licenses": [],
+  "lineage": "/iheemske_root/iheemske0/0-zyyu/",
+  "mcs_label": "",
+  "memory": 2048,
+  "name": "gpujob",
+  "nodelist": "gl1000",
+  "num_nodes": 1,
+  "partition": "gpu",
+  "priority": 8301,
+  "qos": "normal",
+  "requested_reservations": [],
+  "requested_tres": {
+    "billing": {
+      "count": 27391,
+      "id": 5,
+      "name": null,
+      "type": "billing",
+      "type_and_name": "billing"
+    },
+    "cpu": {
+      "count": 1,
+      "id": 1,
+      "name": null,
+      "type": "cpu",
+      "type_and_name": "cpu"
+    },
+    "energy": null,
+    "fs": {},
+    "gres": {
+      "gpu": {
+        "count": 1,
+        "id": 1001,
+        "name": "gpu",
+        "type": null,
+        "type_and_name": "gres/gpu"
+      }
+    },
+    "interconnect": {},
+    "license": {},
+    "mem": {
+      "count": 2048,
+      "id": 2,
+      "name": null,
+      "type": "mem",
+      "type_and_name": "mem"
+    },
+    "node": {
+      "count": 1,
+      "id": 4,
+      "name": null,
+      "type": "node",
+      "type_and_name": "node"
+    },
+    "other": {},
+    "pages": null,
+    "raw_str": null,
+    "vmem": null
+  },
+  "requeue_count": 0,
+  "reservation": null,
+  "reservation_id": null,
+  "scheduler": "BACKFILL",
+  "script": null,
+  "segment_size": null,
+  "standard_error": null,
+  "standard_input": "/dev/null",
+  "standard_output": "/home/zyyu/.slurm-monitor-dev/b/slurm-60377811.out",
+  "start_rpc_received": true,
+  "start_time": 1788610854,
+  "state": "RUNNING",
+  "state_reason": "None",
+  "stats": {
+    "consumed_energy": 0,
+    "disk_read": 0,
+    "disk_write": 0,
+    "elapsed_cpu_time": 44,
+    "page_faults": 0,
+    "resident_memory": 0,
+    "system_cpu_time": 0,
+    "total_cpu_time": 0,
+    "user_cpu_time": 0,
+    "virtual_memory": 0
+  },
+  "steps": {
+    "batch": {
+      "cancelled_by": null,
+      "container": null,
+      "cpu_frequency_governor": null,
+      "cpu_frequency_max": null,
+      "cpu_frequency_min": null,
+      "cpus": 1,
+      "elapsed_time": 44,
+      "eligible_time": 1788610854,
+      "end_time": null,
+      "exit_code": 0,
+      "exit_code_signal": 0,
+      "gpus": {
+        "gpu": {
+          "count": 1,
+          "id": 1001,
+          "name": "gpu",
+          "type": null,
+          "type_and_name": "gres/gpu"
+        }
+      },
+      "gres": {
+        "gpu": {
+          "count": 1,
+          "id": 1001,
+          "name": "gpu",
+          "type": null,
+          "type_and_name": "gres/gpu"
+        }
+      },
+      "id": "batch",
+      "job_id": 60377811,
+      "memory": 2048,
+      "name": "batch",
+      "nodelist": "gl1000",
+      "ntasks": 1,
+      "num_nodes": 1,
+      "standard_error": null,
+      "standard_input": null,
+      "standard_output": null,
+      "start_time": 1788610854,
+      "state": "RUNNING",
+      "stats": {
+        "avg_cpu_frequency": 0.0,
+        "avg_cpu_time": 0,
+        "avg_disk_read": 0,
+        "avg_disk_write": 0,
+        "avg_page_faults": 0,
+        "avg_resident_memory": 0,
+        "avg_virtual_memory": 0,
+        "consumed_energy": 0,
+        "elapsed_cpu_time": 44,
+        "max_disk_read": 0,
+        "max_disk_read_node": "gl1000",
+        "max_disk_read_task": 0,
+        "max_disk_write": 0,
+        "max_disk_write_node": "gl1000",
+        "max_disk_write_task": 0,
+        "max_page_faults": 0,
+        "max_page_faults_node": null,
+        "max_page_faults_task": null,
+        "max_resident_memory": 0,
+        "max_resident_memory_node": "gl1000",
+        "max_resident_memory_task": 0,
+        "max_virtual_memory": 0,
+        "max_virtual_memory_node": "gl1000",
+        "max_virtual_memory_task": 0,
+        "min_cpu_time": 0,
+        "min_cpu_time_node": "gl1000",
+        "min_cpu_time_task": 0,
+        "system_cpu_time": 0,
+        "total_cpu_time": 0,
+        "user_cpu_time": 0
+      },
+      "submit_command": null,
+      "suspended_time": null,
+      "time_limit": null,
+      "tres": {
+        "billing": null,
+        "cpu": {
+          "count": "1",
+          "id": "1",
+          "name": "None",
+          "type": "cpu",
+          "type_and_name": "cpu"
+        },
+        "energy": null,
+        "fs": {},
+        "gres": {
+          "gpu": "{'count': 1, 'id': 1001, 'name': 'gpu', 'type': None, 'type_and_name': 'gres/gpu'}"
+        },
+        "interconnect": {},
+        "license": {},
+        "mem": {
+          "count": "2048",
+          "id": "2",
+          "name": "None",
+          "type": "mem",
+          "type_and_name": "mem"
+        },
+        "node": {
+          "count": "1",
+          "id": "4",
+          "name": "None",
+          "type": "node",
+          "type_and_name": "node"
+        },
+        "other": {},
+        "pages": null,
+        "raw_str": null,
+        "vmem": null
+      },
+      "working_directory": ""
+    },
+    "extern": {
+      "cancelled_by": null,
+      "container": null,
+      "cpu_frequency_governor": null,
+      "cpu_frequency_max": null,
+      "cpu_frequency_min": null,
+      "cpus": 1,
+      "elapsed_time": 44,
+      "eligible_time": 1788610854,
+      "end_time": null,
+      "exit_code": 0,
+      "exit_code_signal": 0,
+      "gpus": {
+        "gpu": {
+          "count": 1,
+          "id": 1001,
+          "name": "gpu",
+          "type": null,
+          "type_and_name": "gres/gpu"
+        }
+      },
+      "gres": {
+        "gpu": {
+          "count": 1,
+          "id": 1001,
+          "name": "gpu",
+          "type": null,
+          "type_and_name": "gres/gpu"
+        }
+      },
+      "id": "extern",
+      "job_id": 60377811,
+      "memory": 2048,
+      "name": "extern",
+      "nodelist": "gl1000",
+      "ntasks": 1,
+      "num_nodes": 1,
+      "standard_error": null,
+      "standard_input": null,
+      "standard_output": null,
+      "start_time": 1788610854,
+      "state": "RUNNING",
+      "stats": {
+        "avg_cpu_frequency": 0.0,
+        "avg_cpu_time": 0,
+        "avg_disk_read": 0,
+        "avg_disk_write": 0,
+        "avg_page_faults": 0,
+        "avg_resident_memory": 0,
+        "avg_virtual_memory": 0,
+        "consumed_energy": 0,
+        "elapsed_cpu_time": 44,
+        "max_disk_read": 0,
+        "max_disk_read_node": "gl1000",
+        "max_disk_read_task": 0,
+        "max_disk_write": 0,
+        "max_disk_write_node": "gl1000",
+        "max_disk_write_task": 0,
+        "max_page_faults": 0,
+        "max_page_faults_node": null,
+        "max_page_faults_task": null,
+        "max_resident_memory": 0,
+        "max_resident_memory_node": "gl1000",
+        "max_resident_memory_task": 0,
+        "max_virtual_memory": 0,
+        "max_virtual_memory_node": "gl1000",
+        "max_virtual_memory_task": 0,
+        "min_cpu_time": 0,
+        "min_cpu_time_node": "gl1000",
+        "min_cpu_time_task": 0,
+        "system_cpu_time": 0,
+        "total_cpu_time": 0,
+        "user_cpu_time": 0
+      },
+      "submit_command": null,
+      "suspended_time": null,
+      "time_limit": null,
+      "tres": {
+        "billing": {
+          "count": "27391",
+          "id": "5",
+          "name": "None",
+          "type": "billing",
+          "type_and_name": "billing"
+        },
+        "cpu": {
+          "count": "1",
+          "id": "1",
+          "name": "None",
+          "type": "cpu",
+          "type_and_name": "cpu"
+        },
+        "energy": null,
+        "fs": {},
+        "gres": {
+          "gpu": "{'count': 1, 'id': 1001, 'name': 'gpu', 'type': None, 'type_and_name': 'gres/gpu'}"
+        },
+        "interconnect": {},
+        "license": {},
+        "mem": {
+          "count": "2048",
+          "id": "2",
+          "name": "None",
+          "type": "mem",
+          "type_and_name": "mem"
+        },
+        "node": {
+          "count": "1",
+          "id": "4",
+          "name": "None",
+          "type": "node",
+          "type_and_name": "node"
+        },
+        "other": {},
+        "pages": null,
+        "raw_str": null,
+        "vmem": null
+      },
+      "working_directory": ""
+    }
+  },
+  "submit_command": "sbatch --parsable --partition gpu --account iheemske0 --mem=200M --cpus-per-task=1 --time=5 --nodes=1 --gres=gpu:1 --mem=2G --time=3 --job-name=gpujob --wrap=nvidia-smi; sleep 75",
+  "submit_time": 1788610828,
+  "suspended_time": null,
+  "system_comment": null,
+  "time_limit": 3,
+  "tres": {
+    "billing": {
+      "count": 27391,
+      "id": 5,
+      "name": null,
+      "type": "billing",
+      "type_and_name": "billing"
+    },
+    "cpu": {
+      "count": 1,
+      "id": 1,
+      "name": null,
+      "type": "cpu",
+      "type_and_name": "cpu"
+    },
+    "energy": null,
+    "fs": {},
+    "gres": {
+      "gpu": {
+        "count": 1,
+        "id": 1001,
+        "name": "gpu",
+        "type": null,
+        "type_and_name": "gres/gpu"
+      }
+    },
+    "interconnect": {},
+    "license": {},
+    "mem": {
+      "count": 2048,
+      "id": 2,
+      "name": null,
+      "type": "mem",
+      "type_and_name": "mem"
+    },
+    "node": {
+      "count": 1,
+      "id": 4,
+      "name": null,
+      "type": "node",
+      "type_and_name": "node"
+    },
+    "other": {},
+    "pages": null,
+    "raw_str": null,
+    "vmem": null
+  },
+  "user_id": 114363080,
+  "user_name": "zyyu",
+  "wckey": "*",
+  "wckey_id": 17183,
+  "working_directory": "/home/zyyu/.slurm-monitor-dev/b"
+}

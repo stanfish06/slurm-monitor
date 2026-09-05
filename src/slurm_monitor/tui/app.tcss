@@ -1,0 +1,79 @@
+Screen {
+    layout: vertical;
+}
+
+#status {
+    height: 1;
+    padding: 0 1;
+    background: $primary-muted;
+    color: $text;
+}
+#status.connected { background: $success-muted; }
+#status.connecting { background: $warning-muted; }
+#status.reconnecting { background: $warning-muted; }
+#status.disconnected { background: $error-muted; }
+#status.auth_required { background: $error-muted; }
+
+#body {
+    height: 1fr;
+}
+
+#tabs {
+    width: 1fr;
+}
+
+DataTable {
+    height: 1fr;
+}
+DataTable.stale {
+    text-opacity: 50%;
+}
+
+#side {
+    width: 40;
+    max-width: 50%;
+    border-left: solid $primary;
+}
+#detail, #usage {
+    height: auto;
+    padding: 0 1;
+    border: round $primary-muted;
+}
+#usage {
+    margin-top: 1;
+}
+
+#message {
+    height: 1;
+    padding: 0 1;
+    color: $text-muted;
+}
+
+ConfirmCancel, HelpScreen {
+    align: center middle;
+}
+#confirm-box {
+    width: 64;
+    height: auto;
+    border: thick $error;
+    background: $surface;
+    padding: 1 2;
+}
+#confirm-prompt {
+    text-style: bold;
+    margin-bottom: 1;
+}
+#confirm-hint {
+    color: $text-muted;
+}
+#help-box {
+    width: 76;
+    height: auto;
+    border: round $primary;
+    background: $surface;
+    padding: 1 2;
+}
+#help-title {
+    text-style: bold;
+    margin-bottom: 1;
+}

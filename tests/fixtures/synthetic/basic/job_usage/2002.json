@@ -1,0 +1,33 @@
+{
+  "job_id": 2002,
+  "state": "RUNNING",
+  "sampled": true,
+  "sampled_at": "2026-09-05T12:00:00Z",
+  "cpu": {
+    "unit": "cpu-seconds",
+    "consumed": 14400.0,
+    "requested": 28800.0
+  },
+  "memory": {
+    "unit": "MB",
+    "consumed": 9000.0,
+    "requested": 32000.0
+  },
+  "walltime": {
+    "unit": "seconds",
+    "consumed": 3600.0,
+    "requested": 14400.0
+  },
+  "gpus_allocated": 1,
+  "gpu_utilization": {
+    "unit": "percent",
+    "consumed": 72.0,
+    "requested": 100.0
+  },
+  "gpu_memory": {
+    "unit": "MB",
+    "consumed": 18000.0,
+    "requested": 40960.0
+  },
+  "gpu_accounting_available": true
+}

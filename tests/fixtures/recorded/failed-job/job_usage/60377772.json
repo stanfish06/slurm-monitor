@@ -1,0 +1,25 @@
+{
+  "cpu": {
+    "consumed": null,
+    "requested": null,
+    "unit": "cpu-seconds"
+  },
+  "gpu_accounting_available": null,
+  "gpu_memory": null,
+  "gpu_utilization": null,
+  "gpus_allocated": 0,
+  "job_id": 60377772,
+  "memory": {
+    "consumed": null,
+    "requested": 200.0,
+    "unit": "MB"
+  },
+  "sampled": false,
+  "sampled_at": "2026-09-05T12:33:48.138736Z",
+  "state": "FAILED",
+  "walltime": {
+    "consumed": 0.0,
+    "requested": 300.0,
+    "unit": "seconds"
+  }
+}

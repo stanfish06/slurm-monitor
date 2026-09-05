@@ -1,0 +1,12 @@
+{
+  "protocol_version": 1,
+  "agent_version": "0.1.0",
+  "user": "synthetic",
+  "hostname": "login1",
+  "pyslurm_version": "25.11.2",
+  "slurm_built_version": "25.11.5",
+  "slurm_running_version": "25.11.5",
+  "extension_available": true,
+  "extension_error": null,
+  "sampling_interval_seconds": 30
+}

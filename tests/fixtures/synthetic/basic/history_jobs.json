@@ -1,0 +1,32 @@
+[
+  {
+    "jobs": [
+      {
+        "job_id": 1900,
+        "name": "analysis",
+        "state": "COMPLETED",
+        "user": "synthetic",
+        "partition": "standard",
+        "account": "lab",
+        "source": "accounting",
+        "submit_time": "2026-09-04T08:00:00Z",
+        "start_time": "2026-09-04T08:10:00Z",
+        "end_time": "2026-09-04T09:10:00Z",
+        "elapsed_seconds": 3600,
+        "num_nodes": 1,
+        "num_cpus": 2,
+        "array_job_id": null,
+        "array_task_id": null,
+        "array_task_range": null,
+        "state_reason": null,
+        "exit_code": 0,
+        "exit_signal": null,
+        "cancelled_by": null,
+        "failed_node": null
+      }
+    ],
+    "window_start": "2026-09-01T00:00:00Z",
+    "window_end": "2026-09-05T12:00:00Z",
+    "fetched_at": "2026-09-05T12:00:00Z"
+  }
+]
