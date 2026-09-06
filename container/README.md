@@ -28,3 +28,12 @@ keeps the Linux venv apart from the macOS `.venv` on the bind mount. Build the a
 
 Note the container is aarch64 while the cluster is x86_64: a build here validates the source, not
 the artifact that ships. `slurm-monitor bootstrap` compiles the deployed extension on the cluster.
+
+Importing pyslurm inside the container aborts with `Could not establish a configuration source`
+unless libslurm finds a `slurm.conf`. There is no controller here, so a stub is enough:
+
+    printf 'ClusterName=dev\nSlurmctldHost=localhost\n' > /tmp/slurm.conf
+    export SLURM_CONF=/tmp/slurm.conf
+    uv sync --extra agent --group dev            # builds pyslurm against Slurm 25.11.6 (~2.5 min)
+    (cd src/slurm_monitor/ext && uv run python setup.py build_ext --build-lib /tmp/extlib)
+    PYTHONPATH=/tmp/extlib uv run python -c 'import slurm_monitor_ext as e; print(e.extension_version())'
