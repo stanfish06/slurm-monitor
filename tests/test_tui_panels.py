@@ -1,6 +1,9 @@
 """Tasks 9.1-9.4: detail panel fields, efficiency figures, GPU rows, absent samples."""
 
-from tests.tui_support import GPU_NO_ACCOUNTING_USAGE, make_app, standard_session
+from datetime import timedelta
+
+from slurm_monitor.tui.format import format_local
+from tests.tui_support import GPU_NO_ACCOUNTING_USAGE, T0, make_app, standard_session
 
 
 async def _select(app, pilot, table, key):
@@ -25,7 +28,8 @@ async def test_detail_panel_for_active_and_historical_job():
             "nodes       gl1520",
             "requested   4 cpus, 1 nodes, 15.6 GB, 1 gpus, gres/gpu:a100=1",
             "time limit  2:00:00",
-            "submitted   2026-09-05 10:00:00",
+            # Rendered in the machine's local zone, so derive the expectation the same way.
+            f"submitted   {format_local(T0 - timedelta(hours=2))}",
             "workdir     /home/tester/run1001",
             "stdout      /home/tester/run1001/slurm-1001.out",
             "stderr      /home/tester/run1001/slurm-1001.err",

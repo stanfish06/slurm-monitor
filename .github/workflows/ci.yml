@@ -37,7 +37,7 @@ jobs:
           persist-credentials: false
       - uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
       # The devShell's shellHook exports SLURM_INCLUDE_DIR, SLURM_LIB_DIR, CC and LD_LIBRARY_PATH.
-      - run: nix develop -c sh -c "grep SLURM_VERSION_STRING \"\$SLURM_INCLUDE_DIR\"/slurm/slurm_version.h"
+      - run: nix develop -c sh -c "grep SLURM_VERSION_NUMBER \"\$SLURM_INCLUDE_DIR\"/slurm/slurm_version.h"
       - run: nix develop -c uv sync --extra agent --group dev
       # libslurm aborts at import without a slurm.conf; a stub is enough with no controller present.
       - run: |
