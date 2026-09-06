@@ -63,7 +63,7 @@ def test_versions_compatible_masks_patch():
     assert not versions_compatible("25.11.5", "26.11.5")
 
 
-@pytest.mark.pyslurm
+@pytest.mark.cluster
 def test_gather_handshake_on_slurm_host():
     pytest.importorskip("pyslurm")
     hs = environment.gather_handshake(*environment.probe_extension())

@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
 
 permissions:
@@ -39,5 +39,10 @@ jobs:
       # The devShell's shellHook exports SLURM_INCLUDE_DIR, SLURM_LIB_DIR, CC and LD_LIBRARY_PATH.
       - run: nix develop -c sh -c "grep SLURM_VERSION_STRING \"\$SLURM_INCLUDE_DIR\"/slurm/slurm_version.h"
       - run: nix develop -c uv sync --extra agent --group dev
-      - run: nix develop -c uv run python -c "import pyslurm; print(pyslurm.__version__)"
+      # libslurm aborts at import without a slurm.conf; a stub is enough with no controller present.
+      - run: |
+          printf 'ClusterName=ci\nSlurmctldHost=localhost\n' > "$RUNNER_TEMP/slurm.conf"
+          echo "SLURM_CONF=$RUNNER_TEMP/slurm.conf" >> "$GITHUB_ENV"
+      - run: nix develop -c uv run python -c "import pyslurm; print(pyslurm.__version__, pyslurm.slurm_api_version())"
+      # tests/test_pyslurm_tier.py compiles the extension against the devShell's Slurm and checks versions.
       - run: nix develop -c uv run pytest -q -m pyslurm
